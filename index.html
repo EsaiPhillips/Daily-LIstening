@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <title>HTML Elements Reference</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Select Options with Flexbox</title>
@@ -9,18 +10,21 @@
 </head>
 
 <body>
-  <div class="radio-group">
-    <label>
-      <input type="radio" name="card-read" value="daily-read"> Daily Read
-    </label>
-    <label>
-      <input type="radio" name="card-read" value="past-present-future"> Past, Present, Future
-    </label>
-    <label>
-      <input type="radio" name="card-read" value="help-with-issue"> Help with an Issue
-      <input type="text" placeholder="Enter your Issue">
-    </label>
-  </div>
+
+  <h3>Daily Listening</h3> <!-- Title -->
+
+<select name="card-read" id="card-read">
+  <option value="">-- Select an option --</option>
+  <option value="daily-read">Daily Read</option>
+  <option value="past-present-future">Past, Present, Future</option>
+  <option value="help-with-issue">Help with an Issue</option>
+</select>
+
+<!-- Textbox, always visible and placed below the dropdown -->
+<br>
+<input type="text" placeholder="Enter your Issue" id="issueInput" disabled>
+<!-- Button below the text box -->
+<button type="button" id="drawButton">Draw Your Cards</button>
 
   <script src="script.js"></script>
 </body>
