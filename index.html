@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset= "UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Listening</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<header>header</header>
+  <h1>Daily Listening</h1> <!-- Title -->
+<h3> Select the type of reading you want</h3>
+<select name="card-read" id="card-read">
+  <option value="">-- Select an option --</option>
+  <option value="daily-draw">Daily Draw</option>
+  <option value="past-present-future">Past, Present, Future</option>
+  <option value="help-with-issue">Help with an Issue</option>
+</select>
+
+<!-- Textbox, always visible and placed below the dropdown -->
+<br>
+<input type="text" placeholder="Enter your Issue" id="issueInput" disabled>
+<!-- Button below the text box -->
+<button type="button" id="drawButton">Draw Your Cards</button>         
+
+  <script src="landingPage.js"></script>
+</body>
+<footer>footer </footer>
+</html>
