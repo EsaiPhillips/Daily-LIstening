@@ -2,29 +2,52 @@
 <html lang="en">
 
 <head>
-  <meta charset= "UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/main.min.css" rel="stylesheet">
   <title>Daily Listening</title>
-  <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-<header>header</header>
-  <h1>Daily Listening</h1> <!-- Title -->
-<h3> Select the type of reading you want</h3>
-<select name="card-read" id="card-read">
-  <option value="">-- Select an option --</option>
-  <option value="daily-draw">Daily Draw</option>
-  <option value="past-present-future">Past, Present, Future</option>
-  <option value="help-with-issue">Help with an Issue</option>
-</select>
-
-<!-- Textbox, always visible and placed below the dropdown -->
-<br>
-<input type="text" placeholder="Enter your Issue" id="issueInput" disabled>
-<!-- Button below the text box -->
-<button type="button" id="drawButton">Draw Your Cards</button>         
-
+<body class="bg-secondary">
+  <header class=""></header>
+    <main class="container text-center">
+        <div class="row mt-5">
+          <h1 class="text-primary fw-bold">Daily Listening</h1>
+        </div>
+        <div class="row my-3">
+          <h3 class="text-primary"> Select the type of reading that you would like</h3>
+        </div>
+  <!-- Dropdown selector -->
+        <div class="row my-2 pt-4 d-flex justify-content-center">
+          <select class="form-select form-select-lg w-50" aria-label="Default select example">
+            <option selected>Select an option</option>
+            <option value="1">Daily Draw</option>
+            <option value="2">Past, Present, and Future</option>
+            <option value="3">Help with an Issue</option>
+          </select>
+        </div>
+  <!-- Textbox, only visible for option 3 and placed below the dropdown. Set d-none to d-block to display -->
+        <div class="row my-2 d-flex justify-content-center">
+          <div class="form-floating form-control-lg w-75">
+              <input type="text" class="form-control fs-4" id="floatingInput" placeholder="Enter the issue you would like help with">
+              <label class="ms-4 mt-1 fs-5 text-wrap" for="floatingInput">What are you thinking about?</label>
+          </div>
+        </div>
+  <!-- Button below the text box -->
+        <div class="row my-4">
+            <div class="col">
+              <button type="button" class="btn btn-outline-light btn-lg" id="drawButton">Draw Your Cards</button>
+            </div>
+        </div>
+    </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="landingPage.js"></script>
 </body>
-<footer>footer </footer>
+<footer>
+  <div class="container position-relative text-center">
+    <div class="text-primary my-6 position-absolute top-100 start-50 translate-middle">
+      Group 10 🔮
+    </div>
+  </div>
+</footer>
 </html>
