@@ -19,15 +19,15 @@
         </div>
   <!-- Dropdown selector -->
         <div class="row my-2 pt-4 d-flex justify-content-center">
-          <select class="form-select form-select-lg w-50" aria-label="Default select example">
-            <option selected>Select an option</option>
+          <select class="form-select form-select-lg w-50" aria-label="Default select example" id="card-read">
+            <option selected value="">Select an option</option>
             <option value="1">Daily Draw</option>
             <option value="2">Past, Present, and Future</option>
             <option value="3">Help with an Issue</option>
           </select>
         </div>
   <!-- Textbox, only visible for option 3 and placed below the dropdown. Set d-none to d-block to display -->
-        <div class="row my-2 d-flex justify-content-center">
+        <div class="row my-2 d-flex justify-content-center d-none" id="issue-container">
           <div class="form-floating form-control-lg w-75">
               <input type="text" class="form-control fs-4" id="floatingInput" placeholder="Enter the issue you would like help with">
               <label class="ms-4 mt-1 fs-5 text-wrap" for="floatingInput">What are you thinking about?</label>
