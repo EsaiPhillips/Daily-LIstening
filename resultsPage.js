@@ -4,7 +4,7 @@ const tarotCards = [
   { image: 'assets/12-death.jpg', title: 'Death', description: 'Death represents transitions and new beginnings, urging us to accept change. In Love & Relationships, the Death card symbolizes the power of transformation for growth and transcendence. Career & Finances readings warn against resistance to change in order to succeed', song: '' },
   { image: 'assets/11-justice.jpg', title: 'Justice', description: 'Justice represents fairness, balance, and truth, and can encourage people to act with integrity and accept responsibility for their choices. It can also symbolize the need for difficult transitions and inner strength when seeking balance and fairness', song: '' },
   { image: 'assets/21-theWorld.jpg', title: 'The World', description: 'The World is a reminder that you have control over the direction of your life, which is why you should use the knowledge you have gained to help you evolve. The caveat is that you have to let go in order to experience the fresh start you are longing for and doing that can be hard', song: '' },
-  { image: 'assets/theMagician.jfif', title: 'The Magicain', description: 'The Magician tarot card represents manifestation, skill, and the power to turn visions into reality; it’s the symbol of creative potential and resourcefulness', song: '' },
+  { image: 'assets/theMagician.jfif', title: 'The Magician', description: 'The Magician tarot card represents manifestation, skill, and the power to turn visions into reality; it’s the symbol of creative potential and resourcefulness', song: '' },
   { image: 'assets/Temperance.webp', title: 'Temperance', description: 'Temperance represents balance, harmony, and moderation, emphasizing the need for patience and compromise. It signifies finding a middle ground and integrating opposites', song: '' },
   { image: 'assets/theHangedMan.webp', title: 'The Hanged Man', description: 'The Hanged Man represents self-reflection, gaining new perspectives, letting go of control, sacrifice for greater understanding, and a period of necessary stillness. It symbolizes pause and surrender', song: '' },
   { image: 'assets/2-theHighPriestess.webp', title: 'The High Priestess', description: 'The High Priestess symbolizes intuition, hidden knowledge, and the subconscious; it can also represent the need for reflection', song: '' },
@@ -79,98 +79,99 @@ const tarotCards = [
   { image: 'assets/swords-13-queen.jpg', title: 'Queen of Swords', description: 'Queen of Swords represents intellect, wisdom, and clear judgment. Whether appearing upright or reversed, this card prompts us to embrace our intellectual prowess, set boundaries, and communicate effectively', song: '' },
   { image: 'assets/swords-14-king.jpg', title: 'King of Swords', description: 'The King of Swords symbolizes authority, rationality, and fairness, often indicating intellectual power, analytical thinking, and ethical judgment', song: '' },
   ];
-const dailySpread = getElementById('daily-spread');
-const dailyCard = getElementById('daily-card');
 
-const pastPresentFutureSpread = getElementById('pastPresentFuture-spread');
-const pastCard = getElementById('past-card');
-const presentCard = getElementById('present-card');
-const futureCard = getElementById('future-card');
+const spread = localStorage.getItem('readingType') || '1'; // Default to '1' if not set for testing
+const userInput = localStorage.getItem('issueText');
 
-const issueSpread = getElementById('specificIssue-spread');
-const clarityCard1 = getElementById('clarity-card1');
-const clarityCard2 = getElementById('clarity-card2');
-const clarityCard3 = getElementById('clarity-card3');
+const dailySpread = document.getElementById('daily-spread');
+const dailyCard = document.getElementById('daily-card');
 
+const pastPresentFutureSpread = document.getElementById('pastPresentFuture-spread');
+const pastCard = document.getElementById('past-card');
+const presentCard = document.getElementById('present-card');
+const futureCard = document.getElementById('future-card');
 
+const issueSpread = document.getElementById('specificIssue-spread');
+const clarityCard1 = document.getElementById('clarity-card1');
+const clarityCard2 = document.getElementById('clarity-card2');
+const clarityCard3 = document.getElementById('clarity-card3');
 
 // Draw cards based on the spread selection
 function drawCards() {
-  const spread = localStorage.getItem('readingType');
-
+  let cards = [];
   if (spread === '1') {
       cards.push(getRandomCard());
-
   } else if (spread === '2') {
       cards.push(getRandomCard(), getRandomCard(), getRandomCard());
   } else if (spread === '3') {
       cards.push(getRandomCard(), getRandomCard(), getRandomCard());
   }
 
-  saveCardHistory(cards);
+  // saveCardHistory(cards);
   displayCards(spread, cards);
-};
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Call drawCards when the page loads
+document.addEventListener('DOMContentLoaded', drawCards);
 
 // Draw random Card
-function getRandomCard () {
-  let index = Math.floor(Math.random()* tarotCards.length);
-  tarotCards[index];
+function getRandomCard() {
+  let index = Math.floor(Math.random() * tarotCards.length);
+  return tarotCards[index];
 };
-
-
 
 // Display the drawn cards based on the selected spread
 function displayCards(spread, cards) {
   // Hide all sections
-  document.getElementById('daily-spread').style.display = 'none';
-  document.getElementById('pastPresentFuture-spread').style.display = 'none';
-  document.getElementById('specificIssue-spread').style.display = 'none';
+  dailySpread.classList.add('d-none');
+  pastPresentFutureSpread.classList.add('d-none');
+  issueSpread.classList.add('d-none');
 
-  if (spread === 'daily-spread') {
+  if (spread === '1') {
       updateCard(document.getElementById('daily-card'), cards[0]);
-      document.getElementById('daily-spread').style.display = 'flex';
-  } else if (spread === 'pastPresentFuture-spread') {
+      dailySpread.classList.remove('d-none');
+
+  } else if (spread === '2') {
       updateCard(document.getElementById('past-card'), cards[0]);
       updateCard(document.getElementById('present-card'), cards[1]);
       updateCard(document.getElementById('future-card'), cards[2]);
-      document.getElementById('pastPresentFuture-spread').style.display = 'flex';
-  } else if (spread === 'specificIssue-spread') {
+      pastPresentFutureSpread.classList.remove('d-none');
+
+  } else if (spread === '3') {
       updateCard(document.getElementById('clarity-card1'), cards[0]);
       updateCard(document.getElementById('clarity-card2'), cards[1]);
       updateCard(document.getElementById('clarity-card3'), cards[2]);
-      document.getElementById('specificIssue-spread').style.display = 'flex';
+      issueSpread.classList.remove('d-none');
   }
 };
 
 // Update a card's image, description, and song
 // cardElement represents the <div> with the image, description and songs.
-function updateCard() {
+function updateCard(cardElement, card) {
+  cardElement.querySelector('h4').textContent = card.title;
   cardElement.querySelector('img').src = card.image;
   cardElement.querySelector('p').textContent = card.description;
-  cardElement.querySelector('audio').src = card.song;
+  cardElement.querySelector('#song').innerHTML = card.song;
+  document.getElementById('userInput').textContent = userInput;
 }
 
-// Add an event listener for the "Draw Again" button
-document.querySelector('button').addEventListener('click', function() {
-  drawCards();
+// Redirect home when draw again is selected
+
+const redirectPage = function (url) {
+  redirectURL = url;
+  location.assign(url);
+};
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', function (event) {
+    event.preventDefault();
+    redirectPage('./index.html');
+  });
 });
 
-// Store card selection history in localStorage
+// Not currently in use - Store card selection history in localStorage
 function saveCardHistory(cards) {
   let history = JSON.parse(localStorage.getItem('cardHistory')) || [];
   history.push({ date: new Date(), cards });

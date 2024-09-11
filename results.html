@@ -9,57 +9,58 @@
     <body class="bg-secondary">
         <main class="container text-center">
             <!-- Set d-none to d-block to display -->
-            <section class="mt-5 container d-block" id="daily-spread">
+            <section class="mt-5 container" id="daily-spread">
                 <h3 class="text-primary">This is your card and song for the day!</h3>
                 <div class="card" id="daily-card">
                     <h4></h4>
                     <img src="">
                     <p></p>
-                    <audio controls src=""></audio>
+                    <p id="song"></p>
                 </div>
 
                 <button type="button" class="btn btn-outline-light btn-lg mt-2">Draw Again</button>
             </section>
             <!-- Set d-none to d-block to display -->
-            <section class="mt-5 container d-block" id="pastPresentFuture-spread">
+            <section class="mt-5 container" id="pastPresentFuture-spread">
                 <h3 class="text-primary">Card 1 refers to the past aspect. Card 2 refers to the present. Card 3 is your outlook for the future!</h3>
                 <div class="row"> 
                     <div class="card col" id="past-card">
                         <h4></h4>
                         <img src="">
                         <p></p>
-                        <audio></audio>
+                        <p id="song"></p>
                     </div>
 
                     <div class="card col" id="present-card">
                         <h4></h4>
                         <img src="">
                         <p></p>
-                        <audio controls src=""></audio>
+                        <p id="song"></p>
                     </div>
 
                     <div class="card col" id="future-card">
                         <h4></h4>
                         <img src="">
                         <p></p>
-                        <audio controls src=""></audio>
+                        <p id="song"></p>
                     </div>
                 </div>
                 <button type="button" class="btn btn-outline-light btn-lg mt-2">Draw Again</button>
 
             </section>
             <!-- Set d-none to d-block to display -->
-            <section class="mt-5 container d-block" id="specificIssue-spread">
+            <section class="mt-5 container" id="specificIssue-spread">
                 <h3 class="text-primary">
-                    Here is your guidiance with your concerns about 
-                    <!-- we should reference whatever they typed -->
+                    Here is your guidiance with your concerns about
+                    <!-- Reference whatever they typed --> 
+                    <h3 class="text-primary" id="userInput"></h3>                  
                 </h3>
                 <div class="row">
                     <div class="card col" id="clarity-card1">
                         <h4></h4>
                         <img src="">
                         <p></p>
-                        <audio controls src=""></audio>
+                        <p id="song"></p>
                         
                     </div>
 
@@ -67,7 +68,7 @@
                         <h4></h4>
                         <img src="">
                         <p></p>
-                        <audio controls src=""></audio>
+                        <p id="song"></p>
                         
                     </div>
 
@@ -75,7 +76,7 @@
                         <h4></h4>
                         <img src="">
                         <p></p>
-                        <audio controls src=""></audio>
+                        <p id="song"></p>
                     
                     </div>
                 </div>
