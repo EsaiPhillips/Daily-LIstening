@@ -52,13 +52,11 @@ const redirectPage = function (url) {
     console.log()
     localStorage.setItem('issueText', this.value);
   });
-//  redirectURL = '/results.html';
-//  redirectPage(redirectURL);
-const btn = document.querySelector("button")
+const btn = document.querySelector("#modalButton")
 
   btn.addEventListener('click', function (event) {
     event.preventDefault();
 
-  redirectPage('/results.html');
+  redirectPage('./results.html');
   });
 });

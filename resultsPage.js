@@ -79,28 +79,60 @@ const tarotCards = [
   { image: 'assets/swords-13-queen.jpg', title: 'Queen of Swords', description: 'Queen of Swords represents intellect, wisdom, and clear judgment. Whether appearing upright or reversed, this card prompts us to embrace our intellectual prowess, set boundaries, and communicate effectively', song: '' },
   { image: 'assets/swords-14-king.jpg', title: 'King of Swords', description: 'The King of Swords symbolizes authority, rationality, and fairness, often indicating intellectual power, analytical thinking, and ethical judgment', song: '' },
   ];
+const dailySpread = getElementById('daily-spread');
+const dailyCard = getElementById('daily-card');
 
-// Draw random Card
-function getRandomCard () {
-  return tarotCards[Math.floor(Math.random()* tarotCards.length)];
-};
+const pastPresentFutureSpread = getElementById('pastPresentFuture-spread');
+const pastCard = getElementById('past-card');
+const presentCard = getElementById('present-card');
+const futureCard = getElementById('future-card');
+
+const issueSpread = getElementById('specificIssue-spread');
+const clarityCard1 = getElementById('clarity-card1');
+const clarityCard2 = getElementById('clarity-card2');
+const clarityCard3 = getElementById('clarity-card3');
+
+
 
 // Draw cards based on the spread selection
 function drawCards() {
-  const spread = document.getElementById('flex').value;
-  let cards = [];
+  const spread = localStorage.getItem('readingType');
 
-  if (spread === 'daily-spread') {
+  if (spread === '1') {
       cards.push(getRandomCard());
-  } else if (spread === 'pastPresentFuture-spread') {
+
+  } else if (spread === '2') {
       cards.push(getRandomCard(), getRandomCard(), getRandomCard());
-  } else if (spread === 'specificIssue-spread') {
+  } else if (spread === '3') {
       cards.push(getRandomCard(), getRandomCard(), getRandomCard());
   }
 
   saveCardHistory(cards);
   displayCards(spread, cards);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Draw random Card
+function getRandomCard () {
+  let index = Math.floor(Math.random()* tarotCards.length);
+  tarotCards[index];
+};
+
+
 
 // Display the drawn cards based on the selected spread
 function displayCards(spread, cards) {
@@ -127,11 +159,11 @@ function displayCards(spread, cards) {
 
 // Update a card's image, description, and song
 // cardElement represents the <div> with the image, description and songs.
-function updateCard(cardElement, card) {
+function updateCard() {
   cardElement.querySelector('img').src = card.image;
   cardElement.querySelector('p').textContent = card.description;
   cardElement.querySelector('audio').src = card.song;
-};
+}
 
 // Add an event listener for the "Draw Again" button
 document.querySelector('button').addEventListener('click', function() {
