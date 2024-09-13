@@ -52,6 +52,21 @@ const redirectPage = function (url) {
     console.log()
     localStorage.setItem('issueText', this.value);
   });
+
+  // Adds validation to prevent modal from opening if the text input is empty
+  document.getElementById('drawButton').addEventListener('click', function() {
+    var inputField = document.getElementById('floatingInput');
+    if (inputField.value.trim() === '') {
+      inputField.classList.add('is-invalid');
+      inputField.reportValidity();
+    } else {
+      inputField.classList.remove('is-invalid');
+      var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+      loadingModal.show();
+    }
+  });
+
+  // Adds click event listener to the Go! button
 const btn = document.querySelector("#modalButton")
 
   btn.addEventListener('click', function (event) {
