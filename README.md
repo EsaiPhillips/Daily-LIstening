@@ -2,7 +2,7 @@
 Daily-Listening is a web application designed for users who want a quick tarot card reading—think of it as fast food for tarot enthusiasts. Whether you're short on time or just looking for a daily reading on the go, this app provides an easy, accessible experience.
 
 # What the Application Does
-Daily Tarot Reading: Users receive a daily card reading that includes cards for the past, present, and future.
+Daily Tarot Reading: Users receive a daily card reading that includes a song for the day 
 Song Recommendations: The app pairs each reading with a song that matches the vibe of your day.
 Problem-Based Readings: Ask a question or pose a problem, and receive a tarot reading to help guide you.
 
