@@ -53,20 +53,27 @@ const redirectPage = function (url) {
     localStorage.setItem('issueText', this.value);
   });
 
-  // Adds validation to prevent modal from opening if the text input is empty
-  document.getElementById('drawButton').addEventListener('click', function() {
-    var inputField = document.getElementById('floatingInput');
-    if (inputField.value.trim() === '') {
-      inputField.classList.add('is-invalid');
-      inputField.reportValidity();
+  // Adds validation to prevent modal from opening if the text input is empty only for dropdown 3 selection
+  document.getElementById('submitButton').addEventListener('click', function() {
+    const inputField = document.getElementById('floatingInput');
+    const dropdownValue = document.getElementById('card-read').value;
+
+    if (dropdownValue === '3') {
+      if (inputField.value.trim() === '') {
+        inputField.classList.add('is-invalid');
+        inputField.reportValidity();
+      } else {
+        inputField.classList.remove('is-invalid');
+        const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+        loadingModal.show();
+      }
     } else {
-      inputField.classList.remove('is-invalid');
-      var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+      const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
       loadingModal.show();
     }
   });
 
-  // Adds click event listener to the Go! button
+  // Adds click event listener to the Go! button on the modal
 const btn = document.querySelector("#modalButton")
 
   btn.addEventListener('click', function (event) {
