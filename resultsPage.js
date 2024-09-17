@@ -80,7 +80,7 @@ const tarotCards = [
   { image: 'assets/swords-14-king.jpg', title: 'King of Swords', description: 'The King of Swords symbolizes authority, rationality, and fairness, often indicating intellectual power, analytical thinking, and ethical judgment', song: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5muxYe1JxKQ9BmxnXRTaGx?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>' },
   ];
 
-const spread = localStorage.getItem('readingType') || '1'; // Default to '1' if not set for testing
+const spread = localStorage.getItem('readingType');
 const userInput = localStorage.getItem('issueText');
 
 const dailySpread = document.getElementById('daily-spread');
