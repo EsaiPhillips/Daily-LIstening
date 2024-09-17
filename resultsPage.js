@@ -102,9 +102,26 @@ function drawCards() {
   if (spread === '1') {
       cards.push(getRandomCard());
   } else if (spread === '2') {
-      cards.push(getRandomCard(), getRandomCard(), getRandomCard());
+// Create a set of unique cards
+      const drawnCards = new Set();
+      while (drawnCards.size < 3) {
+          const card = getRandomCard();
+// Add the card to the set if it is not already in the set
+          if (!drawnCards.has(card)) {
+              drawnCards.add(card);
+          }
+      }
+// Convert the set to the array cards
+      cards = Array.from(drawnCards);
   } else if (spread === '3') {
-      cards.push(getRandomCard(), getRandomCard(), getRandomCard());
+      const drawnCards = new Set();
+      while (drawnCards.size < 3) {
+          const card = getRandomCard();
+          if (!drawnCards.has(card)) {
+              drawnCards.add(card);
+          }
+      }
+      cards = Array.from(drawnCards);
   }
 
   // saveCardHistory(cards);
