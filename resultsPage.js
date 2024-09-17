@@ -80,7 +80,7 @@ const tarotCards = [
   { image: 'assets/swords-14-king.jpg', title: 'King of Swords', description: 'The King of Swords symbolizes authority, rationality, and fairness, often indicating intellectual power, analytical thinking, and ethical judgment', song: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5muxYe1JxKQ9BmxnXRTaGx?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>' },
   ];
 
-const spread = localStorage.getItem('readingType') || '1'; // Default to '1' if not set for testing
+const spread = localStorage.getItem('readingType');
 const userInput = localStorage.getItem('issueText');
 
 const dailySpread = document.getElementById('daily-spread');
@@ -102,9 +102,26 @@ function drawCards() {
   if (spread === '1') {
       cards.push(getRandomCard());
   } else if (spread === '2') {
-      cards.push(getRandomCard(), getRandomCard(), getRandomCard());
+// Create a set of unique cards
+      const drawnCards = new Set();
+      while (drawnCards.size < 3) {
+          const card = getRandomCard();
+// Add the card to the set if it is not already in the set
+          if (!drawnCards.has(card)) {
+              drawnCards.add(card);
+          }
+      }
+// Convert the set to the array cards
+      cards = Array.from(drawnCards);
   } else if (spread === '3') {
-      cards.push(getRandomCard(), getRandomCard(), getRandomCard());
+      const drawnCards = new Set();
+      while (drawnCards.size < 3) {
+          const card = getRandomCard();
+          if (!drawnCards.has(card)) {
+              drawnCards.add(card);
+          }
+      }
+      cards = Array.from(drawnCards);
   }
 
   // saveCardHistory(cards);
